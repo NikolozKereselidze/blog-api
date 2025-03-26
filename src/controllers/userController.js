@@ -1,4 +1,7 @@
-import { Prisma } from "@prisma/client";
+import pkg from "@prisma/client";
+const { PrismaClient } = pkg;
+const prisma = new PrismaClient();
+
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
@@ -13,7 +16,7 @@ export const registerUser = async (req, res) => {
         password: hashedPassword,
       },
     });
-    res.status(201).json({ message: "User registered", user });
+    res.redirect("/api/users/login");
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
