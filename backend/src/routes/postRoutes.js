@@ -7,18 +7,16 @@ import {
   updatePost,
 } from "../controllers/postController.js";
 import { authenticateJWT } from "../middleware/authMiddleware.js";
+import commentRoutes from "./commentRoutes.js";
 
 const router = express.Router();
 
 router.get("/", authenticateJWT, getPosts);
 router.get("/:id", authenticateJWT, getPost);
-
-router.get("/create", authenticateJWT, (req, res) => {
-  res.render("createPost");
-});
 router.post("/create", authenticateJWT, createPost);
-
 router.put("/:id", authenticateJWT, updatePost);
 router.delete("/:id", authenticateJWT, deletePost);
+
+router.use("/:postId/comments", commentRoutes);
 
 export default router;
