@@ -33,15 +33,22 @@ export const loginUser = async (req, res) => {
     if (!user) {
       throw new Error("User not found");
     }
+
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       throw new Error("Invalid password");
     }
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
-    res.json(token);
+
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
+    res.json({ token, user: { id: user.id, email: user.email } });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
   }
 };
