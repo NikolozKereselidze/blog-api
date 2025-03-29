@@ -29,9 +29,8 @@ export const getPosts = async (req, res) => {
       author: true,
     },
   });
-  console.log(posts);
 
-  res.render("posts", { posts });
+  res.json(posts);
 };
 
 export const getPost = async (req, res) => {
