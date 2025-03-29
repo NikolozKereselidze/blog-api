@@ -1,0 +1,79 @@
+.authSection {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #18181b;
+}
+
+.authContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background-color: #3f3f46;
+  padding: 3.2rem 3.2rem;
+  border-radius: 8px;
+  color: #fff;
+}
+
+.authHeader {
+  font-size: 2.4rem;
+}
+
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.authForm > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.authForm > div > label {
+  font-size: 1.6rem;
+}
+
+.authForm > div > input {
+  width: calc(0.4rem * 64);
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 1.6rem;
+  border: none;
+  background-color: #27272a;
+  color: #fff;
+}
+
+.authForm > div > input:focus {
+  outline: none;
+  border: 1px solid #2b7fff;
+}
+
+.authButton {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.4rem;
+  cursor: pointer;
+  background-color: #2b7fff;
+  color: #fff;
+  margin-top: 1.4rem;
+}
+
+.authFooter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.4rem;
+}
+
+.authLink {
+  color: #2b7fff;
+  text-decoration: none;
+}

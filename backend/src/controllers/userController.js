@@ -16,7 +16,12 @@ export const registerUser = async (req, res) => {
         password: hashedPassword,
       },
     });
-    res.redirect("/api/users/login");
+    res.status(201).json({
+      id: user.id,
+      username: user.username,
+      email: user.email,
+    });
+    
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
