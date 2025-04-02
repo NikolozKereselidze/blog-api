@@ -12,6 +12,6 @@ export const authenticateJWT = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (error) {
-    return res.status(403).json({ message: "Forbidden" });
+    return res.status(403).json({ message: error.name });
   }
 };
