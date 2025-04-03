@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPosts } from "../services/postService";
+import styles from "../styles/Home.module.css";
 
 const Home = () => {
   interface Post {
@@ -29,19 +30,26 @@ const Home = () => {
     fetchData();
   }, []);
   return (
-    <div>
-      <h1>Welcome to the Home Page</h1>
-      <div>
-        {posts.length > 0 ? (
-          posts.map((post) => (
-            <div key={post.id}>
-              <h2>{post.title}</h2>
-              <p>{post.content}</p>
-            </div>
-          ))
-        ) : (
-          <p>No posts available.</p>
-        )}
+    <div className={styles.homeSection}>
+      <div className={styles.mainContainer}>
+        <h1>Welcome to the Home Page</h1>
+        <main>
+          <div className={styles.postContainer}>
+            {posts.length > 0 ? (
+              posts.map((post) => (
+                <div className={styles.post}>
+                  <div key={post.id} className={styles.postHeaeder}>
+                    <h2 className={styles.postTitle}>{post.title}</h2>
+                    <p className={styles.postContent}>{post.content}</p>
+                  </div>
+                  <p className={styles.readMore}>Read more </p>
+                </div>
+              ))
+            ) : (
+              <p>No posts available.</p>
+            )}
+          </div>
+        </main>
       </div>
     </div>
   );

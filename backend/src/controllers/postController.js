@@ -20,11 +20,7 @@ export const createPost = async (req, res) => {
 };
 
 export const getPosts = async (req, res) => {
-  const user = req.user;
   const posts = await prisma.post.findMany({
-    where: {
-      authorId: user.id,
-    },
     include: {
       author: true,
     },
