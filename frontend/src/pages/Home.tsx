@@ -37,12 +37,15 @@ const Home = () => {
           <div className={styles.postContainer}>
             {posts.length > 0 ? (
               posts.map((post) => (
-                <div className={styles.post}>
-                  <div key={post.id} className={styles.postHeaeder}>
-                    <h2 className={styles.postTitle}>{post.title}</h2>
-                    <p className={styles.postContent}>{post.content}</p>
+                <div className={styles.postWrap}>
+                  <div className={styles.post}>
+                    <div key={post.id} className={styles.postHeaeder}>
+                      <h2 className={styles.postTitle}>{post.title}</h2>
+                      <p className={styles.postContent}>{post.content}</p>
+                    </div>
+                    <p className={styles.readMore}>Read more </p>
                   </div>
-                  <p className={styles.readMore}>Read more </p>
+                  <div className={styles.layer}></div>
                 </div>
               ))
             ) : (

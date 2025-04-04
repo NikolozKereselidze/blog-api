@@ -4,6 +4,7 @@ const prisma = new PrismaClient();
 
 export const createComment = async (req, res) => {
   const { postId } = req.params;
+  console.log(req.body);
   const { message } = req.body;
   const user = req.user;
   try {
