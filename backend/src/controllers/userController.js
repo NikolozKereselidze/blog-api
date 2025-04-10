@@ -21,7 +21,6 @@ export const registerUser = async (req, res) => {
       username: user.username,
       email: user.email,
     });
-    
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -57,3 +56,4 @@ export const loginUser = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+

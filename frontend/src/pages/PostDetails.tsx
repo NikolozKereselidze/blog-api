@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { addComment, getPosts } from "../services/postService";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Post.module.css";
+import Logout from "../components/Logout";
 
 const PostDetails = () => {
   const { postId } = useParams<{ postId: string }>(); // Extract postId from the URL
@@ -51,6 +52,7 @@ const PostDetails = () => {
 
   return (
     <div className={styles.postContainer}>
+      <Logout />
       {post ? (
         <div className={styles.postWrapper}>
           <div className={styles.post}>

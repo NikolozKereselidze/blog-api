@@ -3,6 +3,7 @@ import { getPosts } from "../services/postService";
 import styles from "../styles/Home.module.css";
 import { getComments } from "../services/commentService";
 import { useNavigate } from "react-router-dom";
+import Logout from "../components/Logout";
 export interface Post {
   id: string;
   title: string;
@@ -65,6 +66,7 @@ const Home = () => {
 
   return (
     <div className={styles.homeSection}>
+      <Logout />
       <div className={styles.mainContainer}>
         <main>
           <div className={styles.postContainer}>

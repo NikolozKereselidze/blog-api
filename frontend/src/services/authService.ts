@@ -53,6 +53,7 @@ export const register = async (
   }
 };
 
-export const logout = () => {
+export const logout = (navigate: (path: string) => void) => {
   localStorage.removeItem("token");
+  navigate("/login");
 };
