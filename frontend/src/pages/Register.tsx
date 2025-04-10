@@ -9,6 +9,7 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const [error, setError] = useState<string | null>("");
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,11 +19,12 @@ const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
     try {
       await register(formData.username, formData.email, formData.password);
       navigate("/login");
-    } catch (error) {
-      console.error("Error:", error);
+    } catch (err) {
+      setError(err.message);
     }
   };
 
@@ -30,50 +32,53 @@ const Register = () => {
     <section className="authSection">
       <div className="authContainer">
         <h2 className="authHeader">Register An Account</h2>
-        <form className="authForm" onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <button className="authButton" type="submit">
-            Register
-          </button>
-        </form>
-        <h3 className="authFooter">
-          Already have an account?
-          <a className="authLink" href="/login">
-            Login
-          </a>
-        </h3>
+        {error && <p className="error">{error} </p>}
+        <div>
+          <form className="authForm" onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button className="authButton" type="submit">
+              Register
+            </button>
+          </form>
+          <h3 className="authFooter">
+            Already have an account?
+            <a className="authLink" href="/login">
+              Login
+            </a>
+          </h3>
+        </div>
       </div>
     </section>
   );

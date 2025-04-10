@@ -13,7 +13,7 @@ export const login = async (email: string, password: string) => {
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.message || "Login failed");
+      throw new Error(data.message || data.errors?.[0]?.msg || "login failed");
     }
 
     // Store the token in localStorage
@@ -21,6 +21,7 @@ export const login = async (email: string, password: string) => {
     return data;
   } catch (err) {
     console.error("Error:", err);
+    throw err;
   }
 };
 
@@ -44,12 +45,15 @@ export const register = async (
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.error || "Registration failed");
+      throw new Error(
+        data.message || data.errors?.[0]?.msg || "Registration failed"
+      );
     }
 
     return data;
   } catch (err) {
     console.error("Error:", err);
+    throw err;
   }
 };
 
