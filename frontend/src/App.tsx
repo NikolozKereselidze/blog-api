@@ -4,6 +4,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PostDetails from "./pages/PostDetails";
+import IsLoggedIn from "./components/IsLoggedin";
 
 function App() {
   return (
@@ -25,8 +26,22 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/register"
+          element={
+            <IsLoggedIn>
+              <Register />
+            </IsLoggedIn>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <IsLoggedIn>
+              <Login />
+            </IsLoggedIn>
+          }
+        />
       </Routes>
     </Router>
   );
