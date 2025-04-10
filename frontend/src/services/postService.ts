@@ -22,3 +22,26 @@ export const getPosts = async () => {
     return err;
   }
 };
+
+export const addComment = async (postId: string, message: string) => {
+  try {
+    const response = await fetch(`${API_URL}/${postId}/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({ message }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to add comment");
+    }
+
+    return data;
+  } catch (err) {
+    return err;
+  }
+};

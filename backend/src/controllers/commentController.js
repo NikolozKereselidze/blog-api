@@ -14,6 +14,13 @@ export const createComment = async (req, res) => {
         postId,
         authorId: user.id,
       },
+      include: {
+        author: {
+          select: {
+            username: true, // Include only the username of the author
+          },
+        },
+      },
     });
     res.json(commentData);
   } catch (error) {
@@ -26,6 +33,13 @@ export const getComments = async (req, res) => {
   const comments = await prisma.comment.findMany({
     where: {
       postId: postId,
+    },
+    include: {
+      author: {
+        select: {
+          username: true,
+        },
+      },
     },
   });
   res.json(comments);

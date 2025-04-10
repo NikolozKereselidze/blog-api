@@ -1,0 +1,127 @@
+.postContainer {
+  min-height: 100vh;
+  background-color: #001c30;
+}
+
+.postWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 9.2rem 4.8rem;
+  width: 90%;
+}
+
+.post {
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 2.5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4.2rem;
+}
+
+.author {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.author > h4 {
+  font-size: 1.4rem;
+  color: #707070;
+  font-weight: 400;
+}
+
+.postDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;
+}
+
+.postDetails > h2 {
+  color: #001b2e;
+  font-size: 6.2rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.postDetails > p {
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.navigate {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.navigate > button {
+  font-size: 1.4rem;
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 1.8rem;
+  border-radius: 8px;
+  background-color: #001c30;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.navigate > button:hover {
+  background-color: #033c65;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.comments > h4 {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.comments > ul {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.comments > ul > li {
+  list-style: none;
+}
+
+.comment {
+  font-size: 1.4rem;
+}
+
+.commentAuthor {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.commentForm {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.commentForm > input {
+  border: none;
+  font-size: 1.4rem;
+  color: #707070;
+  font-weight: 600;
+}
+
+.commentForm > input:focus {
+  outline: none;
+}
+
+.commentForm > button {
+  font-size: 1.4rem;
+  border: none;
+  color: #000;
+  padding: 1rem 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
