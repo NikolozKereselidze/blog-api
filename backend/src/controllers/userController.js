@@ -28,6 +28,13 @@ export const registerUser = async (req, res) => {
       email: user.email,
     });
   } catch (error) {
+    if (error.code === "P2002") {
+      if (error.meta.target[0] === "username") {
+        res.status(400).json({ error: "Username must be unique" });
+      } else if (error.meta.target[0] === "email") {
+        res.status(400).json({ error: "Email must be unique" });
+      }
+    }
     res.status(400).json({ error: error.message });
   }
 };
@@ -41,9 +48,10 @@ export const loginUser = async (req, res) => {
 
   try {
     const { email, password } = req.body;
+    const updatedEmail = email.toLowerCase();
     const user = await prisma.user.findUnique({
       where: {
-        email,
+        email: updatedEmail,
       },
     });
     if (!user) {
@@ -65,6 +73,6 @@ export const loginUser = async (req, res) => {
     res.json({ token, user: { id: user.id, email: user.email } });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: error.message });
   }
 };
